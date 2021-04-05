@@ -1,0 +1,794 @@
+:root {
+    --grayMain: rgb(176, 178, 187);
+    --blueMain: #00b3ff;
+    --blueMilky: #d6ecf6;
+  }
+  @font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Medium.ttf);
+  }
+  @font-face {
+    font-family: RobotoLight;
+    src: url(../fonts/Roboto-Light.ttf);
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    width: 70%;
+    margin: 0 auto;
+  }
+  nav ul {
+    display: flex;
+    list-style-type: none;
+    text-transform: uppercase;
+  }
+  nav li {
+    margin-left: 2rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--grayMain);
+    font-size: 1rem;
+    padding-bottom: 2.5rem;
+  }
+  nav a:hover {
+    border-bottom: 4px solid var(--blueMain);
+  }
+  
+  /*End of navbar*/
+  
+  /*Slider*/
+  
+  .top-sell {
+    margin-top: 0.8rem;
+    width: 100%;
+    height: 60vh;
+    background: var(--blueMilky);
+    text-transform: uppercase;
+  }
+  .slider {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+  }
+  .slider .left {
+    line-height: 1.625;
+    text-align: left;
+    font-family: "Roboto";
+  }
+  .slider .left p {
+    font-size: 1rem;
+  }
+  .slider .left h1 {
+    font-size: 3.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .slider .btn {
+    color: #fff;
+    background: var(--blueMain);
+    text-decoration: none;
+    padding: 0.6rem 2.7rem;
+  }
+  .right {
+    position: relative;
+  }
+  .boxes {
+    position: absolute;
+    top: 6rem;
+    left: 4rem;
+  }
+  .box {
+    width: 17rem;
+    height: 17rem;
+    background: transparent;
+    border: 5px solid #fff;
+    z-index: -1;
+  }
+  .upBox {
+    position: absolute;
+    z-index: 1;
+    bottom: 16px;
+    right: 53px;
+  }
+  .downBox {
+    position: absolute;
+    z-index: 3;
+    right: -65px;
+    bottom: -87px;
+  }
+  .boxPic {
+    z-index: 4;
+    width: 21rem;
+    height: 21rem;
+    position: absolute;
+    top: -10rem;
+    right: -5rem;
+  }
+  .boxPic img {
+    width: 100%;
+    height: 100%;
+  }
+  .slidershow {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .navigation {
+    position: absolute;
+    bottom: 1.2rem;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+  .bar {
+    width: 2rem;
+    height: 0.8rem;
+    border: 2px solid var(--blueMain);
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .bar:hover {
+    background: var(--blueMain);
+  }
+  input[name="r"] {
+    position: absolute;
+    visibility: hidden;
+  }
+  .slides {
+    width: 300%;
+    display: flex;
+  }
+  .slide {
+    width: 33.33333%;
+    transition: 0.6s;
+  }
+  #r1:checked ~ .s1 {
+    margin-left: 0;
+  }
+  #r2:checked ~ .s1 {
+    margin-left: -33.33333%;
+  }
+  #r3:checked ~ .s1 {
+    margin-left: -66.66666%;
+  }
+  
+  /*FEATURED CATEGORIES*/
+  
+  .container {
+    width: 70%;
+    margin: 4rem auto;
+  }
+  .featuredTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .featuredLeft {
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-size: 0.8rem;
+  }
+  .featuredRight span {
+    margin-right: 1rem;
+  }
+  .featuredRight span:hover {
+    cursor: pointer;
+  }
+  /*CONTENT OF FEATURED CATEGORIES*/
+  .featuredContent {
+    margin: 4rem auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 0.7rem;
+    width: 100%;
+  }
+  .featuredBox {
+    border-bottom: 1px solid rgba(161, 159, 159, 0.562);
+  }
+  .featuredData {
+    text-align: center;
+    text-transform: capitalize;
+    font-family: "Roboto";
+    font-size: 0.75rem;
+    margin-top: 0.45rem;
+  }
+  .featuredData .uppercase {
+    text-transform: uppercase;
+  }
+  .featuredData .featuredNoOfItems {
+    color: gray;
+    text-transform: capitalize;
+    margin-top: 0.2rem;
+  }
+  .featuredBox img {
+    height: 10rem;
+  }
+  
+  .featuredProduct {
+    position: relative;
+    background-color: #f4f4f4;
+    padding: 0.7rem 0;
+    text-align: center;
+  }
+  /*Hover on featured product*/
+  .featuredContent > .featuredProduct::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #212642ec;
+    z-index: 2;
+    transition: 0.3s all;
+    opacity: 0;
+  }
+  .featuredProduct:hover::before {
+    opacity: 1;
+  }
+  
+  .featuredProduct .info {
+    position: absolute;
+    z-index: 3;
+    color: #fff;
+    opacity: 0;
+    transition: 0.5s all;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    /*Display flex is set so the button can take width of 100% of parent element*/
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .featuredProduct .info .button {
+    color: #fff;
+    background: var(--blueMain);
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 0.7rem 0.1rem;
+    font-family: "RobotoLight";
+  }
+  
+  .featuredProduct:hover .info {
+    opacity: 1;
+  }
+  
+  /*Best price in this month*/
+  .bestPrice {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-column-gap: 0.7rem;
+    width: 100%;
+  }
+  
+  .bestPrice_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bestPrice_title h2 {
+    width: 50%;
+    text-transform: uppercase;
+    text-align: left;
+    font-family: "Roboto";
+    font-size: 1.7rem;
+  }
+  .bestPrice_title .button {
+    color: #fff;
+    background: var(--blueMain);
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 25%;
+    padding: 0.7rem 0.1rem;
+    font-family: "RobotoLight";
+    text-align: center;
+  }
+  .priceFirst {
+    border-bottom: none;
+  }
+  .price img {
+    height: 14.5rem;
+  }
+  
+  /*NEW ARRIVALS*/
+  .newArrivals {
+    margin: 4rem auto;
+    width: 100%;
+  }
+  .arrivals ul {
+    display: flex;
+    list-style-type: none;
+  }
+  .arrivals li {
+    margin-left: 1.2rem;
+  }
+  .arrivals a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: gray;
+  }
+  .arrivals a:hover {
+    color: var(--blueMain);
+  }
+  
+  /*NEW ARRIVALS PRODUCTS*/
+  
+  .newArrivals_products {
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0.7rem;
+    row-gap: 0.7rem;
+    width: 100%;
+  }
+  
+  /*NEW ARRIVALS PRODUCTS HOVEEER*/
+  .newArrivals_products > .featuredProduct {
+    position: relative;
+  }
+  .newArrivals_products > .featuredProduct::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 82%;
+    background: #212642ec;
+    z-index: 2;
+    transition: 0.3s all;
+    opacity: 0;
+  }
+  .featuredProduct:hover::before {
+    opacity: 1;
+  }
+  .hoverElement {
+    position: absolute;
+    width: 100%;
+    bottom: 4.4rem;
+    z-index: 3;
+    transition: 0.5s all;
+    opacity: 0;
+  }
+  .featuredProduct:hover .hoverElement {
+    opacity: 1;
+  }
+  .hoverIcons {
+    background: #fff;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.6rem 0rem;
+    margin: 0 auto;
+  }
+  .hoverIcons i {
+    font-size: 0.93rem;
+  }
+  .hoverIcons i:hover {
+    cursor: pointer;
+  }
+  
+  /***********LATEST BLOG POST***********/
+  
+  .latestProducts {
+    margin: 3.5rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 0.7rem;
+    width: 100%;
+  }
+  .latestProduct img {
+    width: 19.5rem;
+    border: 1px solid rgba(128, 128, 128, 0.158);
+  }
+  .latestProductData {
+    width: 98%;
+  }
+  .latestProductData h3 {
+    font-size: 1rem;
+    line-height: 2.1rem;
+    color: #0a0f2e;
+    font-weight: bold;
+    font-family: "Roboto";
+  }
+  .latestProductData span {
+    font-size: 0.9rem;
+    color: #b0b2bb;
+    font-family: "RobotoLight";
+  }
+  .latestProductData p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #b0b2bb;
+    font-weight: 200;
+    font-family: "RobotoLight";
+  }
+  
+  .shopByBrands {
+    margin: 5rem auto;
+  }
+  .brands {
+    margin-top: 2.5rem;
+  }
+  .brands ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    flex-wrap: wrap-reverse;
+  }
+  .shopByBrands ul li:hover {
+    cursor: pointer;
+    display: inline-block;
+    animation: tada;
+    animation-duration: 0.8s;
+  }
+  
+  /*************SUBSCRIBE************/
+  
+  .subscribe {
+    width: 100%;
+    margin: 0 auto;
+    background: #f5f5f5;
+    text-align: center;
+  }
+  .subContent {
+    margin: 0 auto;
+    padding: 6rem;
+  }
+  .subTitle h1 {
+    font-size: 1.5rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    color: #0a0f2e;
+    font-weight: bold;
+    font-family: "Roboto";
+    text-align: center;
+  }
+  .subTitle p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1rem;
+    color: #76777a;
+    font-family: "RobotoLight";
+    font-weight: 200;
+    text-align: center;
+  }
+  .subInput {
+    margin-top: 1.5rem;
+  }
+  .subInput .inputEmail {
+    width: 25rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #b0b2bbb2;
+  }
+  .inputButton {
+    color: #fff;
+    background: var(--blueMain);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    font-family: "RobotoLight";
+    padding: 0.5rem 1rem;
+    outline: none;
+    cursor: pointer;
+  }
+  .inputButton:hover {
+    background: #04709ec7;
+  }
+  /**************FOOTER*****************/
+  footer {
+    width: 100%;
+    background: #0a0f2e;
+    color: #76777a;
+  }
+  .footerInfo {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .fBox {
+    display: inline-block;
+    text-align: left;
+    width: 25%;
+  }
+  .fBox img {
+    height: 3.6rem;
+  }
+  .fBox h1 {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: "RobotoLight";
+    text-transform: uppercase;
+  }
+  .fBox ul {
+    list-style-type: none;
+  }
+  .fBox li {
+    font-size: 0.84rem;
+    line-height: 1.7rem;
+    color: #6f738e;
+    font-weight: 200;
+    font-family: "RobotoLight";
+  }
+  .fBox a {
+    text-decoration: none;
+    color: #6f738e;
+  }
+  .fBox a:hover {
+    color: #d6ecf6;
+  }
+  .footerLeft {
+    width: 35%;
+  }
+  .fContent {
+    margin-top: 1rem;
+  }
+  .fContent ul i {
+    margin-right: 0.5rem;
+  }
+  .hrFooter {
+    border: none;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.438);
+    margin: 2rem 0;
+  }
+  .footerAbout {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .lastFoot {
+    width: 35%;
+  }
+  .lastFoot:last-child {
+    width: 20%;
+  }
+  .footerSocial ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none;
+  }
+  .footerSocial a {
+    color: #6f738e;
+    font-size: 1rem;
+  }
+  .footerSocial a:hover {
+    color: #d6ecf6;
+  }
+  .footerPayment:hover {
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 768px) {
+    * {
+      overflow-x: hidden;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    nav .logo {
+      margin-left: 3rem;
+    }
+    .menu {
+      display: none;
+    }
+    .slider {
+      width: 100%;
+    }
+    .slider .right {
+      display: none;
+    }
+    .slider .left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.5;
+      text-align: center;
+    }
+  
+    .slider .left h1 {
+      font-size: 3.3rem;
+      line-height: 1;
+      margin: 2rem auto;
+    }
+    .slider .btn {
+      padding: 0.5rem 2rem;
+    }
+    .bar {
+      width: 1.8rem;
+      height: 0.8;
+    }
+    .featuredTitle .featuredLeft {
+      margin: 0 auto;
+      width: 100%;
+    }
+    .featuredTitle .featuredLeft ul li {
+      margin-left: 0.3rem;
+      font-size: 0.6rem;
+      border-bottom: 0.4px solid var(--blueMain);
+    }
+    .featuredTitle .featuredRight {
+      display: none;
+    }
+    .featuredContent {
+      margin: 4rem auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 0.7rem;
+      width: 100%;
+    }
+    .bestPrice {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 0.7rem;
+      width: 100%;
+    }
+    .bestPrice_title h2 {
+      font-size: 1rem;
+    }
+    .bestPrice_title .button {
+      width: 35%;
+      font-size: 0.8rem;
+    }
+    .newArrivals .featuredTitle {
+      text-align: left;
+    }
+    .newArrivals_products {
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 0.7rem;
+      row-gap: 0.7rem;
+      width: 100%;
+    }
+    .latestProducts {
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 0.7rem;
+      row-gap: 3.7rem;
+      width: 100%;
+    }
+  
+    .latestProductData {
+      text-align: center;
+    }
+    .brands ul li {
+      width: 30%;
+    }
+    .subContent {
+      padding: 3rem;
+    }
+    .subTitle h1 {
+      font-size: 1.1rem;
+    }
+    .inputEmail {
+      text-align: left;
+    }
+    .inputButton {
+      margin-top: 1rem;
+    }
+  
+    .fBox {
+      width: 100%;
+      text-align: center;
+      margin: 1.7rem auto;
+    }
+    .lastFoot {
+      width: 100%;
+      text-align: center;
+      margin: 1rem auto;
+    }
+    .lastFoot:last-child {
+      width: 100%;
+    }
+    .footerSocial a {
+      font-size: 1rem;
+    }
+  }
+  @media screen and (max-width: 992px) and (min-width: 768px) {
+    nav {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .icons {
+      display: none;
+    }
+    .slider {
+      width: 100%;
+    }
+    .slider .left {
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .slider .right {
+      display: none;
+    }
+    .slider .left h1 {
+      font-size: 3.3rem;
+      line-height: 0.1;
+      margin: 3rem auto 4.5rem;
+    }
+    .featuredTitle .featuredLeft {
+      margin: 0 auto;
+    }
+    .featuredTitle .featuredRight {
+      display: none;
+    }
+    .featuredContent {
+      margin: 4rem auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 0.7rem;
+      width: 100%;
+    }
+    .bestPrice {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 0.7rem;
+      width: 100%;
+    }
+    .newArrivals_products {
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 0.7rem;
+      row-gap: 0.7rem;
+      width: 100%;
+    }
+    .latestProducts {
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 0.7rem;
+      row-gap: 3.7rem;
+      width: 100%;
+    }
+  
+    .latestProductData {
+      text-align: center;
+    }
+  }
